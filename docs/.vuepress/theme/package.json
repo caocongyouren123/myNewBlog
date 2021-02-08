@@ -1,4 +1,10 @@
 {
+  "_args": [
+    [
+      "vuepress-theme-reco@1.2.2",
+      "F:\\计算机学习\\前端\\尚学堂百战程序员\\Vue的学习\\znote-master"
+    ]
+  ],
   "_from": "vuepress-theme-reco@1.2.2",
   "_id": "vuepress-theme-reco@1.2.2",
   "_inBundle": false,
@@ -24,16 +30,14 @@
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/vuepress-theme-reco/-/vuepress-theme-reco-1.2.2.tgz",
-  "_shasum": "2ba430738128bd7eabf24eabdc8c907d17ba5383",
-  "_spec": "vuepress-theme-reco@1.2.2",
-  "_where": "E:\\vuepress\\znote",
+  "_spec": "1.2.2",
+  "_where": "F:\\计算机学习\\前端\\尚学堂百战程序员\\Vue的学习\\znote-master",
   "author": {
     "name": "reco_luan"
   },
   "bugs": {
     "url": "https://github.com/vuepress-reco/vuepress-theme-reco/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "@vuepress-reco/vuepress-plugin-back-to-top": "1.0.8",
     "@vuepress-reco/vuepress-plugin-comments": "1.0.13",
@@ -48,7 +52,6 @@
     "valine": "1.3.6",
     "vue-click-outside": "1.0.7"
   },
-  "deprecated": false,
   "description": "A simple and beautiful vuepress Blog & Doc theme.",
   "devDependencies": {
     "babel-eslint": "10.0.3",

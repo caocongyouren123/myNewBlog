@@ -92,7 +92,7 @@ export default {
 
 <style lang="stylus" scoped>
 .tags-wrapper
-  max-width: $contentWidth;
+  max-width: 740px;
   margin: 0 auto;
   padding: 4.6rem 2.5rem 0;
 

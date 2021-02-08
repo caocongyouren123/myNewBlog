@@ -2,11 +2,7 @@
   <div class="footer-wrapper">
     <span>
       <i class="iconfont reco-theme"></i>
-      <a target="blank" :href="$withBase('/views/specification/guide.html')">
-        Powered by
-        <a href="https://vuepress-theme-reco.recoluan.com"><b>Reco</b></a>,
-        <a href="https://vuepress.vuejs.org/"><b>VuePress</b></a>
-      </a>
+      <a target="blank" href="https://vuepress-theme-reco.recoluan.com">VuePress-theme-reco</a>
     </span>
     <span v-if="$themeConfig.record">
       <i class="iconfont reco-beian"></i>

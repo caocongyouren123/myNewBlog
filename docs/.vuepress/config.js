@@ -48,20 +48,20 @@ module.exports={
     blogConfig: {
       category: {
         location: 2, // 在导航栏菜单中所占的位置，默认2
-        text: '分类' ,// 默认文案 “分类”
-        items: [
-          {
-            text: 'Projects🎈',
-          },
-          {
-            text: 'Common sites🎈',
-          }
-        ]
+        text: '分类' // 默认文案 “分类”
       },
       tag: {
         location: 3, // 在导航栏菜单中所占的位置，默认3
-        text: '标签' // 默认文案 “标签”
-      }
+        text: '标签' ,// 默认文案 “标签”
+        items:[{
+          text:'html'
+        }
+        ]
+      },
+      socialLinks: [     // 信息栏展示社交信息
+        { icon: 'reco-github', link: 'https://github.com/recoluan' },
+        { icon: 'reco-npm', link: 'https://www.npmjs.com/~reco_luan' }
+      ]
     },
     // 最后更新时间
     lastUpdated: true,
@@ -95,4 +95,126 @@ module.exports={
   markdown: {
     lineNumbers: true
   },
+  plugins:[
+    // 自定义容器
+    ['vuepress-plugin-container']
+    // 配置打赏
+    [
+      'vuepress-plugin-sponsor',
+      {
+        theme:'打赏一下',
+        alipay: '/sponsor-qrcode/qrcode-alipay.png',
+        wechat: '/sponsor-qrcode/wechat.jpg',
+        qq: '/sponsor-qrcode/qrcode-qq.png',
+        duration: 2000
+      }
+    ],
+    // 配置音乐播放器
+    [
+      '@vuepress-reco/vuepress-plugin-bgm-player',
+      {
+        audios: [
+          // 本地文件示例
+         /* {
+            name: '장가갈 수 있을까',
+            artist: '咖啡少年',
+            url: '/bgm/1.mp3',
+            cover: '/bgm/1.jpg'
+          },*/
+          // 网络文件示例
+          {
+            name: '강남역 4번 출구',
+            artist: 'Plastic / Fallin` Dild',
+            url: 'https://assets.smallsunnyfox.com/music/2.mp3',
+            cover: 'https://assets.smallsunnyfox.com/music/2.jpg'
+          },
+          {
+            name: '用胳膊当枕头',
+            artist: '최낙타',
+            url: 'https://assets.smallsunnyfox.com/music/3.mp3',
+            cover: 'https://assets.smallsunnyfox.com/music/3.jpg'
+          },
+          {
+            name: '我的楼兰',
+            artist: '云朵',
+            url: 'G:/KuGou/菲儿 - 我的楼兰.mp3',
+            cover: 'http://p1.music.126.net/9DlFpuo-Ge4oR5TIn5ktag==/109951163200114076.jpg?param=130y130'
+          },
+          {
+            name: '箱子里的狐狸',
+            artist: '최낙타',
+            url: 'https://assets.smallsunnyfox.com/music/1.mp3',
+            cover: 'https://assets.smallsunnyfox.com/music/1.jpg'
+          },
+
+        ],
+        position:{
+          left: '20px',
+          bottom: '20px',
+          'z-index': '999999'
+        },
+        autoShrink:false,
+        shrinkMode:'float',
+        floatPosition:'right',
+        floatStyle:{
+          bottom: '200px',
+          'z-index': '999999'
+        }
+      }
+    ],
+    // 配置彩带效果
+    ['vuepress-plugin-ribbon'],
+    // 配置看板娘
+    [
+      '@vuepress-reco/vuepress-plugin-kan-ban-niang',
+      {
+        messageStyle: {
+          right: '45px',
+          bottom: '190px'
+        },
+        modelStyle: {
+          right: '85px',
+          bottom: '-20px',
+          opacity: '0.9'
+        },
+        height:250
+      }
+    ],
+    // 配置交流信息
+    [
+      '@vuepress-reco/vuepress-plugin-bulletin-popover', {
+      width: '150px', // 默认 260px
+      title: '消息提示',
+      body: [
+        {
+          type: 'title',
+          content: '欢迎大家联系我！ 🎉🎉🎉',
+          style: 'text-aligin: center;'
+        },
+        {
+          type: 'image',
+          src: '/vuepress/rvcode_qq.jpg',
+         /* style: 'width:80px;margin:0 auto'*/
+        },
+      ],
+      footer: [
+        {
+          type: 'button',
+          text: '打赏',
+          link: '/donate'
+        },
+      ]
+    }],
+    // 配置光标效果
+    ['cursor-effects'],
+    // 配置代码信息
+    ['@vuepress-reco/vuepress-plugin-extract-code']
+    ['@vuepress-reco/vuepress-plugin-rss'],
+    // 配置分页
+    ['@vuepress-reco/vuepress-plugin-pagation'],
+    // 配置名人名言
+    ['vuepress-plugin-boxx'],
+    // 配置代码复制
+    [' @mr-hope/vuepress-plugin-copy-code']
+  ]
 }

@@ -2,16 +2,6 @@
 // 导航栏
 module.exports=[
   {text: '主页', link: '/index.html', icon: 'reco-home'},
-  {text: '分类', icon: 'reco-category',
-    items: [
-      {
-        text: 'Projects🎈',
-      },
-      {
-        text: 'Common sites🎈',
-      }
-    ]
-  },
   {
     text: '其它', icon: 'reco-document',
     items: [

@@ -5,12 +5,23 @@ date: 2020-10-01
 sidebarDepth: 0
 isShowComments: true
 ---
-![失败]('../.vuepress/public/vuepress/banner.jpg')
-<div style="height: 120px">
-    <img src="/images/home-bg.jpg" alt="">
-	<Boxx :changeTime='changeTime'>
-	</Boxx>
-</div>
+::: tip
+
+您好，欢迎来到我的博客！
+
+:::
+
+::: warning
+
+右上角联系！
+
+:::
+
+::: danger
+
+请多多指教！
+
+:::
 
 <p style='display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;'>
 	<img id='imgShow' :class='active' :src='imgSrc'/>
@@ -22,18 +33,15 @@ isShowComments: true
 
 </div>
 
-
 <div id='tag'>
 
   [【标签】](/tag/)
 
  </div>
 
-
-
 <div id='fj'>
 
-  [【前端】](/views/frontend/EChartsStudy.html) | [【后端】](/views/backend/ArrayList.html)
+[【前端】](/views/frontend/EChartsStudy.html) | [【后端】](/views/backend/ArrayList.html)
 
 </div>
 

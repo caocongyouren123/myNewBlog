@@ -170,7 +170,7 @@ export default {
 
   mounted () {
     this.$router.afterEach(() => {
-      // this.isSidebarOpen = false
+      this.isSidebarOpen = false
     })
 
     this.hasKey()
@@ -277,7 +277,7 @@ export default {
 
 .comments-wrapper
   padding 2rem 2rem 2rem 22rem
-  max-width: $contentWidth;
+  max-width: 740px;
   margin: 0 auto;
 @media (max-width: $MQNarrow)
   .theme-container.no-sidebar
