@@ -6,7 +6,7 @@ const sidebar = require('./config/sidebar/')
 module.exports={
   //dest:'./dist',   打包的目录
   title:"Grass",
-  description:'会当凌绝顶，一览众山小。',
+  description:'会当凌绝顶，一览众山小',
   // 头部区域
   head:[
     [ 'link',{
@@ -96,7 +96,7 @@ module.exports={
     lineNumbers: true
   },
   plugins:[
-    // 自定义容器
+    // 配置自定义容器
     ['vuepress-plugin-container']
     // 配置打赏
     [
