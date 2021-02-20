@@ -9,7 +9,7 @@ module.exports=[
         text: 'Projects🎈',
         items: [{
           text: 'My Project',
-          link: '/other/project',
+          link: '/views/project/20190928',
         }]
       }, {
         text: 'Common sites🎈',

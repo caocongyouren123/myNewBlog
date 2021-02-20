@@ -69,7 +69,7 @@ isShowComments: true
 		},
 		methods: {
     		randomPic() {
-				let picList = ['kQWXr.gif','rddek.gif']
+				let picList = ['kQWXr.gif','rddek.gif','比心1.png']
 				let imgShow = document.getElementById("imgShow")
 				setInterval(() => {
 					if(this.active == 'active'){

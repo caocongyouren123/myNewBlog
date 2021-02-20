@@ -103,9 +103,9 @@ module.exports={
       'vuepress-plugin-sponsor',
       {
         theme:'打赏一下',
-        alipay: '/sponsor-qrcode/qrcode-alipay.png',
-        wechat: '/sponsor-qrcode/wechat.jpg',
-        qq: '/sponsor-qrcode/qrcode-qq.png',
+        // alipay: '/sponsor-qrcode/qrcode-alipay.png',
+        wechat: '/vuepress/rvcode_qq.jpg',
+        // qq: '/sponsor-qrcode/qrcode-qq.png',
         duration: 2000
       }
     ],
@@ -215,6 +215,8 @@ module.exports={
     // 配置名人名言
     ['vuepress-plugin-boxx'],
     // 配置代码复制
-    [' @mr-hope/vuepress-plugin-copy-code']
+    [' @mr-hope/vuepress-plugin-copy-code'],
+    // 配置图片放大
+    ['@vuepress/plugin-medium-zoom']
   ]
 }
