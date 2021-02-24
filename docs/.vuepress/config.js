@@ -137,7 +137,7 @@ module.exports={
           {
             name: '我的楼兰',
             artist: '云朵',
-            url: 'G:/KuGou/菲儿 - 我的楼兰.mp3',
+            url: 'music/菲儿 - 我的楼兰.mp3',
             cover: 'http://p1.music.126.net/9DlFpuo-Ge4oR5TIn5ktag==/109951163200114076.jpg?param=130y130'
           },
           {
@@ -149,7 +149,7 @@ module.exports={
 
         ],
         position:{
-          left: '20px',
+          left: '80px',
           bottom: '20px',
           'z-index': '999999'
         },

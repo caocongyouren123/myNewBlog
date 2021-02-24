@@ -3,7 +3,7 @@ title: "Q&A宝典-Vue篇"
 date: 2020-11-15
 visitor: 28
 categories:
- - 前端框架
+- 前端框架
 tags:
 - 复习,面试
 isShowComments: true
@@ -48,7 +48,9 @@ showSponsor: true
 5. 销毁：
     * beforeDestroy: 销毁前，组件销毁之前调用，在这一步，实例仍然完全可用
     * destroyed: 销毁后，vue实例已经解除了事件监听和dom绑定，对data改变不会再触发周期函数了,但是dom结构依然存在。
-
+6. 当增加了keep-alive功能时，增加以下两个周期
+    * activated: 在keep-alive组件激活的时候调用
+    * deactivated: 在keep-alive组件停用时候调用
 ## 四.指令
 1. v-once:
     * 说明：view层展示的数据只渲染一次，更改data数据的时候不会发生改变。
@@ -310,20 +312,31 @@ this.$refs.child1       // 在父组件中拿到想要的特定的子组件
 ## 九.vue脚手架
 1. 应用场景：复杂的大型项目
 2. 脚手架2
-    * 全局安装（建议）：npm install @vue/cli-init -g
+    * 全局安装（建议）：npm install @vue/cli-init -g(init起到一个桥接的作用，便于想继续使用cli2)
     * 当前项目下安装：npm install @vue/cli-init -save
-    * 初始化项目：vue init webpack project(自己去一个项目名)
+    * 初始化项目：vue init webpack project(自己取一个项目名)
     
 3. 脚手架3
     * 全局安装（建议）：npm install @vue/cli -g
     * 当前项目下安装：npm install @vue/cli -save
-    * 初始化项目：vue create project(自己去一个项目名)
+    * 初始化项目：vue create project(自己取一个项目名)
 
 4. 脚手架2和脚手架3的区别
     * 基于的版本不同：cli2是基于webpack3打造的，cli3是基于webpack4打造的
     * 设计原则不同：cli3的设计原则是0配置，移除配置文件根目录下的build和config
     * cli3提供了vue ui命令，提供了可视化配置，更加的方便直观
     * 移除了static文件夹，新增了public文件夹，并且index.html移到了public文件夹中
+5. cli3文件目录
+    * public  公共资源
+    * src     源代码
+        * assets  静态资源文件夹（存放图片和css的一些全局样式）
+        * components  存放组件
+        * view       视图文件夹
+        * router     路由相关文件夹
+        * app.vue    应用主组件
+        * main.js    主入口文件
+    babel.config.js   es语法转换文件
+    package.json      相关安装包的配置文件
 
 ## 十.vue修饰符
 1. .lazy
@@ -372,12 +385,12 @@ this.$refs.child1       // 在父组件中拿到想要的特定的子组件
     * vue-router的作用：基于路由和组件，用于设定访问路径，将路径和组件之间映射起来。
     * 使用
         * 安装：npm install vue-router@版本，不写默认安装最新的版本 --save
-        * 导入路由对象并安装插件(在路由js文件中)
+        * 导入路由对象并安装路由插件(在路由js文件中)
             * import Vue from 'vue'
             * import VueRouter from 'vue-router'
             * Vue.use(VueRouter)
-        * 创建路由实例，配置映射关系: ``const router=new Vouter({[路由映射关系，可提取出来写]})``
-        * 在入口文件main.js中挂载路由实例   
+        * 创建路由实例，配置映射关系: ``const router=new VueRouter({[路由映射关系，可提取出来写]})``
+        * 导出然后在入口文件main.js中挂载路由实例   
         * 通过`<router-link>`和`<router-view>`的方式来使用路由
             `<router-link>`：内置组件会被渲染成一个a标签
             `<router-view>`: 会根据当前路径动态的渲染出不同的组件
@@ -389,7 +402,7 @@ this.$refs.child1       // 在父组件中拿到想要的特定的子组件
         * this.$router.push('/home') 
 4. 路由参数的传递  
     * params类型：               
-       * 配置路由格式："/user/:userId"              
+       * 配置路由格式："/user/:userId" (动态路由的设定就是在静态路由名称前面加上一个:号)             
     * query类型：               
        * 配置路由格式： "/router?id=123"             
     * 传递方式：         
@@ -450,7 +463,7 @@ methods:{
     * 两个参数：
         * context 上下文（相对于箭头函数中的this）
         * payload 挂载函数，在挂载函数中通过context.commit()来触发mutations进而更新state
-    * 调用方式：通过在methods中调用`this.$store.dispatch()`
+    * 调用方式：通过在methods中调用`this.$store.dispatch() 或者 mapActions()`
     
 6. models:
     
@@ -526,4 +539,46 @@ export function request(config){
 }
 
 ```  
+## 十五.导航钩子
+1. 描述：又称为导航守卫
+2. 分类：
+    * 全局钩子
+        * beforeEach
+        * beforeResolve
+        * afterEach
+    * 单个路由共享钩子
+        * beforeEnter
+    * 组价级钩子
+        * beforeRouter
+        * beforeRouterUpdate
+        * beforeRouterLeave
+    * 都有的参数：
+        * to  即将要进入的目标路由对象
+        * from 当前导航正要离开的路由
+        * next 到达下一个路由，如果不用就会遭到拦截
+    
+## 十六.Vue双向数据绑定的原理
+1. 通过递归的方法遍历数据对象，为其设置set和get方法
+2. 用compile解析模板指令，添加监听数据的订阅者，一旦数据有变就会收到通知，更新视图
+3. 订阅者（watcher）是Observer和compile之间的桥梁。Observer是用来监听model数据的，compile是用来解析模板
+4. 利用视图交互技术，一旦视图有变化的时候就更新model里面的数据
 
+## 十七.数据丢失
+* 如果在初始化的时候没有定义数据，之后更新的数据是无法触发页面渲染更新的，这部分的数据就是丢失的数据。这种现象
+  就称为数据丢失现象。
+  
+## 十八.检测数据变化
+* app.$set()
+
+## 十九.解决页面闪烁问题
+* 通过v-cloak指令，这个指令一直保持在元素上，直到关联实例结束编译
+
+## 二十.在循环中实现双向绑定
+* 给v-model绑定数组的一个成员
+* 语法：
+```
+<div v-for="(item,index) in arr">
+    <input type='text' v-model='arr[index]'>
+</div>
+
+```

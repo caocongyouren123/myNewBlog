@@ -9,7 +9,7 @@ isShowComments: true
 ---
 
 <Boxx/>
- 
+
 # 第一篇 
 ## 一.CSS的基本选择器，权重
 1. ID选择器>Class选择器>伪类，伪元素选择器>元素选择器>全局选择器*{}
@@ -21,7 +21,7 @@ isShowComments: true
 
 ## 二.CSS的引入方式
     内联式（行内式）>内嵌式（在在style里面）=外链式（通过link在头部引用）
- 
+
 ## 三.link和@import的区别
 1. 兼容性：
     * link属于html标签，没有兼容性问题；@import属于css范畴，不支持低浏览器版本。
@@ -77,10 +77,10 @@ isShowComments: true
 
 ## 八.css的继承
 1. 可继承：
-  *`font-size,font-family,color(a标签除外),text-align,text-indent`
+    *`font-size,font-family,color(a标签除外),text-align,text-indent`
 2. 不可继承：
-  *`border,padding,margin,width,height,背景属性,定位属性`
-  
+    *`border,padding,margin,width,height,背景属性,定位属性`
+
 ## 九.css的初始化
 1. 原因：浏览器的兼容性问题，css的初始化可以解决页面在不同的浏览器出现的差异。
 2. 解决：最简单的一种就是``` *{margin:0;padding:0}```
@@ -311,7 +311,7 @@ isShowComments: true
 ## 十七.margin塌陷
 1. 形成条件：在正常情况下，父元素的高度默认是由子元素撑开的，此时给子元素设置浮动
 2. 影响：导致父元素高度塌陷，此时给子元素设置margin-top不会生效，但是当margin-top超过一定限度
-  就会带着父元素一起向下移动。
+    就会带着父元素一起向下移动。
 3. 解决方案：触发bfc，给父元素设置以下属性（其中之一就行）
 * position:absolute
 * display:inline-block
@@ -388,3 +388,194 @@ isShowComments: true
     * 灵活度不够
     * 兼容性不好
     * 部分动画功能不能实现，不能实现复杂动画
+    
+## 八.flex布局
+1. 概念：弹性布局，任何一个容器都可以指定为flex布局`display:flex;`,行内元素也可以`display:inline-flex`
+2. 注意：设为flex布局之后，子元素的float,clear,vertical-align属性将消失
+3. 两个轴：
+    * 水平的主轴
+    * 垂直的交叉轴
+![image](./img/flex1.png)
+4. 属性：
+    * flex-direction 属性决定主轴的方向（即项目的排列方向）,取值有:
+        * row: 默认的，表示主轴为水平方向，起点在左端。
+        * row-reverse: 主轴为水平方向，起点在右端。
+        * column: 主轴为垂直方向，起点在上沿。
+        * column-reverse: 主轴为垂直方向，起点在下沿。
+    * flex-wrap  决定当一行排不下的时候怎么换行的
+        * nowrap:  默认不换行
+        * wrap：   换行，第一行在上面
+        * wrap-reverse： 换行，第一行在下面
+    * flex-flow  是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+        flex-flow: row || nowrap
+    * justify-content  属性定义了项目在主轴上的对齐方式。
+        * flex-start: 左对齐（默认值）
+        * flex-end: 右对齐
+        * center: 水平居中
+        * space-between: 两端对齐，间隔相等
+        * space-around: 两侧对齐
+    * align-items  属性定义项目在交叉轴上如何对齐。
+        * flex-start: 上对齐
+        * flex-end: 下对齐
+        * center: 垂直居中
+        * stretch: 默认值，如果项目未设置高度或设为auto，将占满整个容器的高度
+        * baseline: 按照项目的第一行文字的基线对齐。
+    * align-content 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+    * flex  属性flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+        * flex: 0 1 auto (不放大,如果空间不足该项目将缩小,计算主轴是否有多余空间)
+        * flex：auto (1 1 auto)
+        * flex: none (0 0 auto)
+        * flex: 1(让所有弹性盒模型对象的子元素都有相同的长度，且忽略它们内部的内容：)
+ 
+## 九.grid布局
+1. 概述：又称栅栏布局将整个网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。
+2. 与flex布局的区别：flex布局只针对轴线的位置，可以看做是一维布局。grid布局是通过行和列的形式可以看做是二维布局。
+3. 样式：
+![image](./img/grid1.png)
+4. 说明：设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。
+5. 属性：
+    * grid-template-columns 属性定义每一列的列宽
+    * grid-template-rows 属性定义每一行的行高
+```
+定义一个三行三列的网格，列宽和行高都是100px。
+方法一：
+.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+
+方法二：
+.container {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 33.33% 33.33% 33.33%;
+}
+
+方法三：简写形式
+repeat(参数1，参数2)
+参数1：表示要重复的次数
+参数2：表示要重复的值
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: repeat(3, 33.33%);
+}
+
+fr 关键字
+表示两列，每一列的宽度一样。如果两列的宽度分别为1fr和2fr，就表示后者是前者的两倍。
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+fr可以与绝对长度的单位结合使用，这时会非常方便。
+.container {
+  display: grid;
+  grid-template-columns: 150px 1fr 2fr;  表示第一列列宽为150px,剩下的第三列宽度是第二列的两倍
+}
+
+minmax()函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。
+grid-template-columns: 1fr 1fr minmax(100px, 1fr);
+
+auto 关键字
+auto关键字表示由浏览器自己决定长度。
+grid-template-columns: 100px auto 100px;  左右两列是宽度为100px，中间自适应
+```
+5. 属性：
+    * grid-row-gap 行间隔，
+    * grid-column-gap 列间隔，
+    * grid-gap 上面两个的合并写法 20px 20px
+    * grid-auto-flow 属性，划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。默认的放置顺序是"先行后列"，即先填满第一行，再开始放入第二行，
+        * grid-auto-flow:row 先行后列
+        * grid-auto-flow:column 先列后行
+        * grid-auto-flow: row dense;  先行后列，并且尽可能紧密填满，尽量不出现空格。
+        * grid-auto-flow: column dense;  表示"先列后行"，并且尽量填满空格。
+    * justify-items   水平对齐方式（在单元格内）
+        * start    左对齐
+        * center   水平居中对齐
+        * end      右对齐
+        * stretch  拉伸对齐
+    * align-items   垂直对齐方式 （在单元格内）
+        * start    上对齐
+        * center   垂直居中对齐
+        * end      下对齐
+        * stretch  拉伸对齐
+    * justify-content   水平对齐方式（整个内容区域）
+        * justify-content: start | end | center | stretch | space-around | space-between | space-evenly(项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔);
+    * grid-template-areas 属性用于定义区域
+```
+先划分出9个单元格，然后将其定名为a到i的九个区域，分别对应这九个单元格。
+.container { 
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas: 'a b c'
+                       'd e f'
+                       'g h i';
+}
+多个单元格合并成一个区域的写法如下。
+下面代码将9个单元格分成a、b、c三个区域。
+grid-template-areas: 'a a a'
+                     'b b b'
+                     'c c c';
+```
+## 十一.css兼容性问题
+1. 文字本身的大小不兼容：同样大小的font-size例如14px在不同的浏览器下占据的空间是不一样的，ie下实际占高16px,火狐下实际占高17px(上下有留白导致)
+    * 解决方案：给文字设定line-height
+2. 火狐下容器高度限定问题，容器不会被内容撑大,ie下会被撑大
+3. 可能会出现浮动无法清除现象
+    * 解决方案：给li设置属性zoom:1
+4. 通用的解决办法：
+    * css初始化，在github上面下载normalize.css在main.js中引入
+    * 浏览器的私有属性：
+        * -moz代表firefox,内核为Gecko
+        * -ms代表ie,内核为Trident
+        * -webkit代表chrome,safari.内核为TBlink,Webkit
+        * -o代表opera,内核为TBlink,
+    * 自动化插件：Autoprefixer，是一款自动管理浏览器前缀的插件，它可以解析CSS文件并且添加浏览器前缀到CSS内容里。
+    
+## 十二.自适应布局
+1. 媒体查询响应式页面
+    * 移动端：`@media screen and (max-width:768px)`
+    * iPad端：`@media screen and (max-width:992px) and (min-width:768px)`
+    * pc端：`@media screen and (min-width:992px)`
+2. Bootstrap的栅栏布局
+    * 说明：Bootstrap框架下的一种布局方式。行必须放在.container class内。
+    * 使用：
+        * .col: 超小屏幕<576px
+        * .col-sm: 576<小屏幕<768
+        * .col-md: 768<中等屏幕<992  
+        * .col-lg: 大屏幕>992  
+        * .col-xl: 超大屏幕>1200
+3. flex弹性布局
+```
+1. 一列固定,一列自适应
+<div id="main">
+    <div id="aside"></div>
+    <div id="detail"></div>
+</div>
+#main{display:flex}
+#aside{width:200px;height:400px}  固定的就设为固定宽度
+#detail{flex:1;height:400px}   自适应设置flex:1就行，平分布局
+
+2. 两列固定,一列自适应（双飞翼布局）
+<div id="main">
+    <div id="aside"></div>
+    <div id="detail"></div>
+    <div id="nav"></div>
+</div>
+#main{display:flex}
+#aside{width:200px;height:400px}  固定的就设为固定宽度
+#detail{flex:1;height:400px} 
+#nav{width:200px;height:400px} 
+``` 
+4. 直接使用grid栅栏布局
+```
+.container {
+  display: grid;
+  grid-template-columns: 150px auto 150px;  表示第一列列宽为150px,剩下的第三列宽度是第二列的两倍
+}
+#aside{height:400px;background-color: red;}
+#detail{height:400px;background-color: green;}
+#nav{height:400px;background-color: blue;}
+```

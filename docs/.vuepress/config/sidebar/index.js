@@ -77,10 +77,18 @@ module.exports = {
       ]
     },
     {
+      title: 'Css预编译',
+      collapsable: true,
+      children: [
+        'cssprecompile/file'
+      ]
+    },
+    {
       title: 'Myproject',
       collapsable: true,
       children: [
-        'project/20190928'
+        'project/supermall',
+        'project/shopelc',
       ]
     },
     {

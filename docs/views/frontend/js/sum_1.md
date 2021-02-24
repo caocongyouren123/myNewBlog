@@ -58,7 +58,7 @@ isShowComments: true
     * var str=new String('hello')
 5. 字符串的截取：
     * str.substring(num1,num2)
-        * 从num1截取到num2，num1包括，num2不包括。如果num1>num2.则会自动更换两者位置
+        * 从num1截取到num2，num1包括，num2不包括。如果num1>num2.则会自动更换两者位置,不改变原字符串
     * str.substr(num1,num2)
         * 从num1开始截取，截取num2个长度。两个参数互换意思就不同了。
     * str.slice(num1,num2)
